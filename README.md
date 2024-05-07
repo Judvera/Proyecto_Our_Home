@@ -1,6 +1,6 @@
 # Proyecto manejo de CRUD
 
-Hito 1 - Conectando Django a una base de datos - En Desarrollo
+Hito 1 - Conectando Django a una base de datos - Completado
 
 Hito 2 - Migraciones y recuperación de datos con Django - Proximamente
 
