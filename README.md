@@ -2,7 +2,7 @@
 
 Hito 1 - Conectando Django a una base de datos - Completado
 
-Hito 2 - Migraciones y recuperación de datos con Django - Proximamente
+Hito 2 - Migraciones y recuperación de datos con Django - En proceso
 
 Hito 3 - Creando una aplicación usando datos con Django y el patrón MVC - Proximamente
 
