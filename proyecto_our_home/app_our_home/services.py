@@ -58,11 +58,9 @@ def create_property(
         print(f"Landlord with RUT {landlord_rut} not found.")
         return None
 
-# Leer
 def get_all_properties():
     return Property.objects.all()
 
-# Actualizar
 def update_property(property_id, **kwargs):
     try:
         property = Property.objects.get(id=property_id)
@@ -74,7 +72,6 @@ def update_property(property_id, **kwargs):
         print(f"Property with ID {property_id} not found.")
         return None
 
-# Eliminar
 def delete_property(property_id):
     try:
         property = Property.objects.get(id=property_id)
