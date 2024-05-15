@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import User
+from .models import Property
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -15,3 +16,15 @@ class UserRegistrationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+    
+
+class PropertyForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        fields = ['name', 'description', 'built_area', 'total_area', 'parking_spaces', 'bedrooms', 'bathrooms', 'address', 'region', 'district', 'property_type', 'rental_price']
+
+
+class PropertyUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        fields = ['name', 'description', 'built_area', 'total_area', 'parking_spaces', 'bedrooms', 'bathrooms', 'address', 'region', 'district', 'property_type', 'rental_price']

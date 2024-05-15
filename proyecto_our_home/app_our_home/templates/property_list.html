@@ -1,0 +1,46 @@
+{% extends "static_base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties for Rent</title>
+    <!-- Enlazar Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Properties for Rent</h1>
+        <div class="row">
+            {% for property in properties %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ property.name }}</h5>
+                        <p class="card-text">{{ property.description }}</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Built Area:</strong> {{ property.built_area }} sqft</li>
+                            <li class="list-group-item"><strong>Total Area:</strong> {{ property.total_area }} sqft</li>
+                            <li class="list-group-item"><strong>Parking Spaces:</strong> {{ property.parking_spaces }}</li>
+                            <li class="list-group-item"><strong>Bedrooms:</strong> {{ property.bedrooms }}</li>
+                            <li class="list-group-item"><strong>Bathrooms:</strong> {{ property.bathrooms }}</li>
+                            <li class="list-group-item"><strong>Address:</strong> {{ property.address }}</li>
+                            <li class="list-group-item"><strong>Region:</strong> {{ property.region.name_region }}</li>
+                            <li class="list-group-item"><strong>District:</strong> {{ property.district.name_district }}</li>
+                            <li class="list-group-item"><strong>Property Type:</strong> {{ property.get_property_type_display }}</li>
+                            <li class="list-group-item"><strong>Rental Price:</strong> ${{ property.rental_price }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

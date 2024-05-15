@@ -45,36 +45,36 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="/">Our_Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/acerca">Acerca</a>
+                        <a class="nav-link" href="/property_list">Our Properties</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/contacto">Contacto</a>
+                        <a class="nav-link" href="/login">Landlord</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/explora">Explora</a>
+                        <a class="nav-link" href="/login">Tenant</a>
                     </li>
                     <!-- VALIDACION DE INICIO DE SESION DE USUARIO -->
                     {% if user.is_authenticated %}
                     <!-- ITEMS EXLUSIVO INICIANDO SESION -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="/bienvenido">Bienvenido</a>
-                    </li>
+                    </li> -->
 
                     <li>
-                        <a class="nav-link" href="/logout">Cerrar sesión</a>
+                        <a class="nav-link" href="/logout">Logout</a>
                     </li>
 
                     {% else %}
                     <!-- ITEM EN BARRA GENERAL -->
-                    <li>
+                    <!-- <li>
                         <a class="nav-link" href="/login">Iniciar sesión</a>
-                    </li>
+                    </li> -->
 
                     {% endif %}
                 </ul>
