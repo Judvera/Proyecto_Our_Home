@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UserRegistrationForm
-from django.contrib.auth import login
-from .forms import PropertyForm
-from .models import Property
-from .forms import PropertyUpdateForm
+from django.http import HttpResponse
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth import authenticate, login
+from .forms import PropertyForm, PropertyUpdateForm, UserRegistrationForm
+from .models import User, Property
 
 # Create your views here.
 def indexView(request):
@@ -20,8 +20,34 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'register.html', {'form': form})
 
+def login_view(request):
+    error_message = None
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        
+        try:
+            user = User.objects.get(email=email)
+            if password == user.password:
+                # Login successful
+                request.session['user_id'] = user.rut
+                return redirect('profile')  # Redirect to a home page or dashboard
+            else:
+                # Invalid password
+                error_message = 'Invalid password'
+        except User.DoesNotExist:
+            # User not found
+            error_message = 'User not found'
+    
+    return render(request, 'registration/login.html', {'error_message': error_message})
+
 def profile(request):
-    return render(request, 'profile.html', {})
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')  # Redirect to login if not logged in
+    
+    user = User.objects.get(rut=user_id)
+    return render(request, 'profile.html', {'user': user})
 
 def add_property(request):
     if request.method == 'POST':

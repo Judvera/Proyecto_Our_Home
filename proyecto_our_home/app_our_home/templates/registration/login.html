@@ -1,8 +1,22 @@
+<!-- COMANDO PARA EXTENDER CODIGO DE ARCHIVO INDICADO -->
+{% extends "static_base.html" %}
+<!-- COMANDO DE CARGA DE ARCHIVOS EN STATIC -->
+{% load static %}
+
+<!-- APERTURA CODIGO MODIFICADO -->
 {% block content %}
-    <h1>Login</h1>
-    <form method="post">
-        {% csrf_token%}
-        {{ form.as_p}}
-        <button>Login</button>
-    </form>
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <button type="submit">Login</button>
+</form>
 {% endblock %}

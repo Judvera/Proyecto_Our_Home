@@ -1,7 +1,9 @@
 {% extends "static_base.html" %}
 {% block content %}
 <!-- LLAMADA DE DATOS DEL USUARIO -->
-<div class="container text-center vh-100">
-    <h1>Bienvenido {{ user.first_name }} {{ user.last_name }}</h1>
-</div>
+<h2>Welcome, {{ user.first_name }} {{ user.last_name }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone: {{ user.phone }}</p>
+    <p>Address: {{ user.address }}</p>
+    <p>User Type: {{ user.get_user_type_display }}</p>
 {% endblock %}

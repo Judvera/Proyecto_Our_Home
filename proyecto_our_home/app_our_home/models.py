@@ -12,6 +12,10 @@ class User(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)
+    password = models.CharField(max_length=128, default='1234562')
+    
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
     
 class Region(models.Model):
     name_region = models.CharField(max_length=100)
@@ -46,40 +50,3 @@ class Property(models.Model):
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
     rental_price = models.DecimalField(max_digits=10, decimal_places=2)
     landlord = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
-class Region(models.Model):
-    name_region = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name_region
-
-class District(models.Model):
-    name_district = models.CharField(max_length=100)
-    region = models.ForeignKey(Region, on_delete=models.CASCADE, related_name='districts')
-
-    def __str__(self):
-        return self.name_district
-
-class Property(models.Model):
-    PROPERTY_TYPE_CHOICES = [
-        ('house', 'House'),
-        ('apartment', 'Apartment'),
-        ('plot', 'Plot'),
-    ]
-    
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    built_area = models.FloatField()
-    total_area = models.FloatField()
-    parking_spaces = models.IntegerField()
-    bedrooms = models.IntegerField()
-    bathrooms = models.IntegerField()
-    address = models.CharField(max_length=200)
-    region = models.ForeignKey(Region, on_delete=models.CASCADE)
-    district = models.ForeignKey(District, on_delete=models.CASCADE)
-    property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
-    rental_price = models.DecimalField(max_digits=10, decimal_places=2)
-
-    def __str__(self):
-        return self.name
