@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import User
-from .models import Property
+from django.contrib.auth.hashers import make_password
+from .models import User, Property
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -12,7 +12,7 @@ class UserRegistrationForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password"])
+        user.password = make_password(self.cleaned_data["password"])
         if commit:
             user.save()
         return user

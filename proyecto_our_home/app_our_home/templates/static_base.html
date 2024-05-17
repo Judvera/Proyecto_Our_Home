@@ -22,20 +22,20 @@
 
 <body>
     <!-- HEADER -->
-    <header style="background: #C0392B;" class="text-center">
+    <!-- <header style="background: #C0392B;" class="text-center">
         {% block header %}
         <a class="navbar-brand" href="/">
             <img src="">
         </a>
         {% endblock %}
-    </header>
+    </header> -->
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg" style="background-color: #AED6F1;">
+    <nav class="navbar navbar-expand-lg" style="background-color: #cbd1bd;">
         {% block navbar %}
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="{% static 'our home.jpg' %}" alt="Our Home" width="30" height="24">
+                <img src="{% static 'our home.jpg' %}" alt="Our Home" width="60px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -45,36 +45,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Our_Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/property_list">Our Properties</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Landlord</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Tenant</a>
-                    </li>
                     <!-- VALIDACION DE INICIO DE SESION DE USUARIO -->
-                    {% if user.is_authenticated %}
+                    {% if request.user.is_authenticated or request.session.is_authenticated %}
                     <!-- ITEMS EXLUSIVO INICIANDO SESION -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="/bienvenido">Bienvenido</a>
-                    </li> -->
-
                     <li>
-                        <a class="nav-link" href="/logout">Logout</a>
+                        <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
                     </li>
 
                     {% else %}
                     <!-- ITEM EN BARRA GENERAL -->
-                    <!-- <li>
-                        <a class="nav-link" href="/login">Iniciar sesión</a>
-                    </li> -->
+                    <li>
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                    </li>
 
                     {% endif %}
                 </ul>
@@ -86,12 +71,15 @@
     <!-- CONTENIDO -->
     <section style="background-color: #FDF5E6;">
         {% block content %}
-        <!-- DISPOSICION DE CONTENIDO DEPENDIENDO DE LA PÁGINA A MOSTRAR -->
+            <div class="container text-center vh-100">
+                <h1>Our Home</h1>
+                <h2>El hogar de tu futuro hogar</h2>
+            </div>
         {% endblock %}
     </section>
 
     <!-- FOOTER -->
-    <footer class="text-white text-center py-3" style="background: #333333;">
+    <footer class="text-white text-center py-3" style="background: #E07A5F;">
         {% block footer %}
 
         <p style="font-size: 25px;">Our Home. Todos los derechos reservados.</p>

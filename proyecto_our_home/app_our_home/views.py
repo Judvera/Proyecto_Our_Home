@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.models import User as DjangoUser
+from django.contrib.auth.decorators import login_required
 from .forms import PropertyForm, PropertyUpdateForm, UserRegistrationForm
 from .models import User, Property
 
@@ -23,30 +25,43 @@ def register(request):
 def login_view(request):
     error_message = None
     if request.method == 'POST':
-        email = request.POST['email']
+        email_username = request.POST['email']
         password = request.POST['password']
         
         try:
-            user = User.objects.get(email=email)
-            if password == user.password:
-                # Login successful
+            user = User.objects.get(email=email_username)
+            if check_password(password, user.password):
                 request.session['user_id'] = user.rut
-                return redirect('profile')  # Redirect to a home page or dashboard
+                request.session['user_email'] = user.email
+                request.session['is_authenticated'] = True
+                return redirect('profile')
             else:
-                # Invalid password
                 error_message = 'Invalid password'
         except User.DoesNotExist:
-            # User not found
-            error_message = 'User not found'
+            user2 = authenticate(request, username=email_username, password=password)
+            if user2 is not None:
+                login(request, user2)
+                return redirect('profile')
+            else:
+                error_message = 'Invalid email or password'
     
     return render(request, 'registration/login.html', {'error_message': error_message})
 
+def logout_view(request):
+    if 'user_id' in request.session:
+        del request.session['user_id']
+        del request.session['user_email']
+        del request.session['is_authenticated']
+    if request.user.is_authenticated:
+        from django.contrib.auth import logout
+        logout(request)
+    return redirect('home')
+
 def profile(request):
-    user_id = request.session.get('user_id')
-    if not user_id:
-        return redirect('login')  # Redirect to login if not logged in
-    
-    user = User.objects.get(rut=user_id)
+    try:
+        user = User.objects.get(rut=request.session.get('user_id'))
+    except User.DoesNotExist:
+        user = request.user
     return render(request, 'profile.html', {'user': user})
 
 def add_property(request):
