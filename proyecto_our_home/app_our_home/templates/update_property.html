@@ -1,22 +1,163 @@
-{% extends "static_base.html" %}
+{% extends 'static_base.html' %}
 {% load static %}
 
-{% block content %}
+{% block title %}Update Property{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Property</title>
-</head>
-<body>
-    <h1>Update Property</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update Property</button>
-    </form>
-</body>
-</html>
+{% block content %}
+<div class="container pt-4">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-9">
+
+            <h1 class="text-black text-center mb-4">Update Property: {{ property.name }}</h1>
+
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body">
+
+                    <form method="post" action="{% url 'update_property' property.id %}">
+                        {% csrf_token %}
+
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Name</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.name }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Description</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.description }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Built Area</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.built_area }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Total Area</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.total_area }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Parking Spaces</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.parking_spaces }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Bedrooms</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.bedrooms }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Bathrooms</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.bathrooms }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.address }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Region</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.region }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">District</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.district }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Property Type</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.property_type }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Rental Price</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                {{ form.rental_price }}
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="px-5 py-4 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Update Property</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

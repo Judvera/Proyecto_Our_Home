@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f@r)=eby2gsta)ut2(1va30*ok@tquqxw6(%snq)#nc)b%4nu*'
+SECRET_KEY = 'django-insecure-_2zr6oo8a&aq(ub-48$fbx&meff(ge38lp$fdh4cc-5-k$v9*u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -52,8 +53,16 @@ MIDDLEWARE = [
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    # More backends if needed
+    # Otros backends si los necesitas
 ]
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
 
 ROOT_URLCONF = 'proyecto_our_home.urls'
 
@@ -68,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'app_our_home.context_processors.user_context',
             ],
         },
     },
@@ -81,15 +91,14 @@ WSGI_APPLICATION = 'proyecto_our_home.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': "django.db.backends.postgresql",
-        'NAME': 'our_home_bbdd',
-        'USER': 'jvera',
-        'PASSWORD': 'desafio',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'our_home_db',
+        'USER': 'emiliomadrid',
+        'PASSWORD': 'Kari1016',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
-
 
 
 # Password validation
@@ -121,7 +130,6 @@ TIME_ZONE = 'America/Santiago'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

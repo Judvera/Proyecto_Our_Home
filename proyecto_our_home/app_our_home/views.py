@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.models import User as DjangoUser
@@ -64,36 +65,50 @@ def profile(request):
         user = request.user
     return render(request, 'profile.html', {'user': user})
 
+def landlord_property(request):
+    user = User.objects.get(rut=request.session.get('user_id'))
+    if user.user_type != 'landlord':
+        return redirect('profile')
+
+    properties = Property.objects.filter(landlord=user)
+    return render(request, 'landlord_property.html', {'properties': properties})
+
 def add_property(request):
+    user = User.objects.get(rut=request.session.get('user_id'))
     if request.method == 'POST':
         form = PropertyForm(request.POST)
         if form.is_valid():
-            property_instance = form.save(commit=False)
-            property_instance.landlord = request.user  # Asigna el arrendador actual como propietario
-            property_instance.save()
-            return redirect('home')  # Redirige a la página de inicio después de guardar la propiedad
+            property = form.save(commit=False)
+            property.landlord = user
+            property.save()
+            return redirect('landlord_property')
     else:
         form = PropertyForm()
     return render(request, 'add_property.html', {'form': form})
 
 def update_property(request, property_id):
-    property_instance = get_object_or_404(Property, pk=property_id)
+    user = User.objects.get(rut=request.session.get('user_id'))
+    property = get_object_or_404(Property, id=property_id, landlord=user)
     if request.method == 'POST':
-        form = PropertyUpdateForm(request.POST, instance=property_instance)
+        form = PropertyForm(request.POST, instance=property)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirige a la página de inicio después de actualizar la propiedad
+            messages.success(request, 'Property updated successfully!')
+            return redirect('landlord_property')
     else:
-        form = PropertyUpdateForm(instance=property_instance)
-    return render(request, 'update_property.html', {'form': form})
+        form = PropertyUpdateForm(instance=property)
+    return render(request, 'update_property.html', {'form': form, 'property': property})
 
 def delete_property(request, property_id):
-    property_instance = get_object_or_404(Property, pk=property_id)
+    user = User.objects.get(rut=request.session.get('user_id'))
+    property = get_object_or_404(Property, id=property_id, landlord=user)
     if request.method == 'POST':
-        property_instance.delete()
-        return redirect('home')  # Redirige a la página de inicio después de borrar la propiedad
-    return render(request, 'delete_property.html', {'property': property_instance})
+        property.delete()
+        messages.success(request, 'Property deleted successfully!')
+        return redirect('landlord_property')
+    return render(request, 'confirm_delete_property.html', {'property': property})
 
 def property_list(request):
+    user = User.objects.get(rut=request.session.get('user_id'))
     properties = Property.objects.all()
     return render(request, 'property_list.html', {'properties': properties})
