@@ -6,7 +6,10 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.models import User as DjangoUser
 from django.contrib.auth.decorators import login_required
 from .forms import PropertyForm, PropertyUpdateForm, UserRegistrationForm
-from .models import User, Property
+from .models import User, Property, Region, District
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from .forms import PropertyForm
 
 # Create your views here.
 def indexView(request):
@@ -112,3 +115,42 @@ def property_list(request):
     user = User.objects.get(rut=request.session.get('user_id'))
     properties = Property.objects.all()
     return render(request, 'property_list.html', {'properties': properties})
+
+def update_property(request, property_id):
+    property = get_object_or_404(Property, pk=property_id)
+
+    if request.method == 'POST':
+        form = PropertyForm(request.POST, instance=property)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('property_detail', args=[property_id]))
+    else:
+        form = PropertyForm(instance=property)
+
+    regions = Region.objects.all()
+    districts = District.objects.all().order_by('name_district')
+
+    return render(request, 'update_property.html', {
+        'form': form,
+        'property': property,
+        'regions': regions,
+        'districts': districts,
+    })
+
+def add_property(request):
+    if request.method == 'POST':
+        form = PropertyForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('property_list')  # Change 'property_list' to the appropriate URL name for your list view
+    else:
+        form = PropertyForm()
+
+    regions = Region.objects.all()
+    districts = District.objects.all().order_by('name_district')
+
+    return render(request, 'add_property.html', {
+        'form': form,
+        'regions': regions,
+        'districts': districts,
+    })

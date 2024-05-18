@@ -102,12 +102,17 @@
 
                         <hr class="mx-n3">
 
-                        <div class="row align-items-center py-3">
+                        <div class="row align-items-center pt-4 pb-3">
                             <div class="col-md-3 ps-5">
                                 <h6 class="mb-0">Region</h6>
                             </div>
                             <div class="col-md-9 pe-5">
-                                {{ form.region }}
+                                <select id="region" name="region" class="form-control">
+                                    <option value="">Select a region</option>
+                                    {% for region in regions %}
+                                        <option value="{{ region.id }}">{{ region.name_region }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </div>
 
@@ -118,7 +123,12 @@
                                 <h6 class="mb-0">District</h6>
                             </div>
                             <div class="col-md-9 pe-5">
-                                {{ form.district }}
+                                <select id="district" name="district" class="form-control">
+                                    <option value="">Select a district</option>
+                                    {% for district in districts %}
+                                        <option value="{{ district.id }}" data-region="{{ district.region_id }}">{{ district.name_district }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </div>
 
@@ -158,4 +168,25 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const regionSelect = document.getElementById('region');
+        const districtSelect = document.getElementById('district');
+        const districts = Array.from(districtSelect.options).slice(1); // Skip the first option
+    
+        regionSelect.addEventListener('change', function() {
+            const regionId = this.value;
+    
+            // Clear the current options
+            districtSelect.innerHTML = '<option value="">Select a district</option>';
+    
+            // Add the districts that belong to the selected region
+            districts.forEach(district => {
+                if (district.getAttribute('data-region') === regionId) {
+                    districtSelect.appendChild(district);
+                }
+            });
+        });
+    });
+    </script>
 {% endblock %}

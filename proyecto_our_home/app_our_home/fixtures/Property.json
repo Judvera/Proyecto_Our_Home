@@ -13,7 +13,7 @@
             "address": "123 Main Street",
             "region_id": 1,
             "district_id": 1,            
-            "property_type": "departamento",
+            "property_type": "Apartment",
             "rental_price": "1500.00",
             "landlord_id": 123456789
         }
@@ -32,7 +32,7 @@
             "address": "456 Elm Street",
             "region_id": 2,
             "district_id": 2,            
-            "property_type": "casa",
+            "property_type": "House",
             "rental_price": "2500.00",
             "landlord_id": 987654321
         }
@@ -51,7 +51,7 @@
             "address": "789 Oak Street",
             "region_id": 3,
             "district_id": 3,
-            "property_type": "parcela",
+            "property_type": "Plot",
             "rental_price": "1000.00",
             "landlord_id": 158406896
         }

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app_our_home.apps.AppOurHomeConfig',
+    'app_our_home',
 ]
 
 MIDDLEWARE = [
@@ -93,8 +93,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'our_home_db',
-        'USER': 'emiliomadrid',
-        'PASSWORD': 'Kari1016',
+        'USER': 'jvera',
+        'PASSWORD': 'desafio',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
