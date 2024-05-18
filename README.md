@@ -8,7 +8,9 @@ Hito 3 - Creando una aplicación usando datos con Django y el patrón MVC - Comp
 
 Hito 4 - Creando una aplicación usando datos con Django y su ORM - Completado
 
+## Añadido
 
+Se agrega el archivo "update_passwords.py", ya que el Log In de usuarios se está utilizando con las contraseñas hasheadas. Con el archivo agregado, se hashean las contraseñas de aquellos usuarios que entraron con la contraseña por defecto.
 
 ## Descripción
 
