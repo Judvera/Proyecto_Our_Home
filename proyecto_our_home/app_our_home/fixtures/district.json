@@ -1,8 +1,4 @@
 [
-  { "model":	 "app_our_home.district",	 "pk":	1	,  "fields":	 { "name_district":	 "Arica"	, "region":	 1 } }	,
-  { "model":	 "app_our_home.district",	 "pk":	2	,  "fields":	 { "name_district":	 "Camarones"	, "region":	 1 } }	,
-  { "model":	 "app_our_home.district",	 "pk":	3	,  "fields":	 { "name_district":	 "Putre"	, "region":	 1 } }	,
-  { "model":	 "app_our_home.district",	 "pk":	4	,  "fields":	 { "name_district":	 "General Lagos"	, "region":	 1 } }	,
   { "model":	 "app_our_home.district",	 "pk":	1	,  "fields":	 { "name_district":	 "Alto Hospicio"	, "region":	 2 } }	,
   { "model":	 "app_our_home.district",	 "pk":	2	,  "fields":	 { "name_district":	 "Iquique"	, "region":	 2 } }	,
   { "model":	 "app_our_home.district",	 "pk":	3	,  "fields":	 { "name_district":	 "Camiña"	, "region":	 2 } }	,
@@ -291,6 +287,9 @@
   { "model":	 "app_our_home.district",	 "pk":	286	,  "fields":	 { "name_district":	 "San Joaquín"	, "region":	 13 } }	,
   { "model":	 "app_our_home.district",	 "pk":	287	,  "fields":	 { "name_district":	 "San Miguel"	, "region":	 13 } }	,
   { "model":	 "app_our_home.district",	 "pk":	288	,  "fields":	 { "name_district":	 "San Ramón"	, "region":	 13 } }	,
-  { "model":	 "app_our_home.district",	 "pk":	289	,  "fields":	 { "name_district":	 "Vitacura"	, "region":	 13 } }	
-]									
-  
+  { "model":	 "app_our_home.district",	 "pk":	289	,  "fields":	 { "name_district":	 "Vitacura"	, "region":	 13 } },
+  { "model":	 "app_our_home.district",	 "pk":	290	,  "fields":	 { "name_district":	 "Arica"	, "region":	 1 } }	,
+  { "model":	 "app_our_home.district",	 "pk":	291	,  "fields":	 { "name_district":	 "Camarones"	, "region":	 1 } }	,
+  { "model":	 "app_our_home.district",	 "pk":	293	,  "fields":	 { "name_district":	 "Putre"	, "region":	 1 } }	,
+  { "model":	 "app_our_home.district",	 "pk":	294,  "fields":	 { "name_district":	 "General Lagos"	, "region":	 1 } }
+]
