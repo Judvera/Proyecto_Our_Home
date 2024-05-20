@@ -1,5 +1,6 @@
 <!-- COMANDO DE CARGA DE ARCHIVOS EN STATIC -->
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,15 +22,6 @@
 </head>
 
 <body>
-    <!-- HEADER -->
-    <!-- <header style="background: #C0392B;" class="text-center">
-        {% block header %}
-        <a class="navbar-brand" href="/">
-            <img src="">
-        </a>
-        {% endblock %}
-    </header> -->
-
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #cbd1bd;">
         {% block navbar %}
@@ -45,34 +37,34 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="/">{% trans 'Home' %}</a>
                     </li>
 
                     <!-- VALIDACION DE INICIO DE SESION DE USUARIO -->
                     {% if request.user.is_authenticated or request.session.is_authenticated %}
                     <!-- ITEMS EXLUSIVO INICIANDO SESION -->
                     <li>
-                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                        <a class="nav-link" href="{% url 'profile' %}">{% trans 'Profile' %}</a>
                     </li>
                     {% if user.get_user_type_display == 'tenant' or user.get_user_type_display == 'Tenant' %}
                     <li>
-                        <a class="nav-link" href="{% url 'property_list' %}">Properties</a>
+                        <a class="nav-link" href="{% url 'property_list' %}">{% trans 'Properties' %}</a>
                     </li>
                     {% elif user.get_user_type_display == 'landlord' or user.get_user_type_display == 'Landlord' %}
                     <li>
-                        <a class="nav-link" href="{% url 'landlord_property' %}">Properties</a>
+                        <a class="nav-link" href="{% url 'landlord_property' %}">{% trans 'Properties' %}</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{% url 'add_property' %}">Add Property</a>
+                        <a class="nav-link" href="{% url 'add_property' %}">{% trans 'Add Property' %}</a>
                     </li>
                     {% endif %}
                     <li>
-                        <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+                        <a class="nav-link" href="{% url 'logout' %}">{% trans 'Log Out' %}</a>
                     </li>
                     {% else %}
                     <!-- ITEM EN BARRA GENERAL -->
                     <li>
-                        <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                        <a class="nav-link" href="{% url 'login' %}">{% trans 'Log In' %}</a>
                     </li>
 
                     {% endif %}
@@ -81,7 +73,7 @@
         </div>
         {% endblock %}
     </nav>
-
+    <!-- BARRA DE MENSAJES EN CASO DE HABER -->
     {% if messages %}
     <div class="container mt-3" style="background-color: #FDF5E6;">
         {% for message in messages %}
@@ -103,8 +95,8 @@
     <footer class="text-white text-center py-3" style="background: #E07A5F;">
         {% block footer %}
 
-        <p style="font-size: 25px;">Our Home. Todos los derechos reservados.</p>
-        <p style="font-size: 25px;">Creado por Judith Vera y Emilio Madrid para Desafio Latam</p>
+        <p style="font-size: 25px;">{% trans 'Our Home. All rights reserved.' %}</p>
+        <p style="font-size: 25px;">{% trans 'Created by Judith Vera and Emilio Madrid for Desafio Latam' %}</p>
 
         {% endblock %}
     </footer>

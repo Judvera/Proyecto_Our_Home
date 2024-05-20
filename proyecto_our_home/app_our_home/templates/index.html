@@ -2,9 +2,10 @@
 {% extends "static_base.html" %}
 <!-- COMANDO DE CARGA DE ARCHIVOS EN STATIC -->
 {% load static %}
+{% load i18n %}
 
 {% block content %}
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+<div id="carouselExampleCaptions" class="carousel slide container" data-bs-ride="carousel" data-bs-interval="5000">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
             aria-current="true" aria-label="Slide 1"></button>
@@ -14,38 +15,38 @@
             aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-        <!-- Item Carrusel 1 -->
+        <!-- ITEM CARRUSEL 1 -->
         <div class="carousel-item active">
-            <img src="{% static 'images/carusel1.jpg' %}" class="d-block w-100" alt="Image 1">
+            <img src="{% static 'images/carrusel1.png' %}" class="d-block w-100" alt="Image 1" style="height: 750px; object-fit: cover; object-position: top;">
             <div class="carousel-caption d-none d-md-block text-black">
-                <h5>Espacio para todos</h5>
-                <p>¿Arrendador? ¿Arrendatario? Aquí puedes buscar o crear según tus necesidades.</p>
+                <h3>{% trans 'Room for everyone' %}</h3>
+                <p style="font-size: 1.25rem;">{% trans '¿Landlor? ¿Tenant? Here you can search or create according to your needs.' %}</p>
             </div>
         </div>
-        <!-- Item Carrusel 1 -->
+        <!-- ITEM CARRUSEL 1 -->
         <div class="carousel-item">
-            <img src="{% static 'images/carusel2.jpg' %}" class="d-block w-100" alt="Image 2">
+            <img src="{% static 'images/carrusel2.png' %}" class="d-block w-100" alt="Image 2" style="height: 750px; object-fit: cover; object-position: top;">
             <div class="carousel-caption d-none d-md-block">
-                <h5>En todo lugar</h5>
-                <p>Revisa nuestro catálogo o tus nuevas solicitudes donde sea.</p>
+                <h3>{% trans 'Anywhere, anytime' %}</h3>
+                <p style="font-size: 1.25rem;">{% trans 'Check our catalog or your new applications anytime, anywhere.' %}</p>
             </div>
         </div>
-        <!-- Item Carrusel 1 -->
+        <!-- ITEM CARRUSEL 1 -->
         <div class="carousel-item">
-            <img src="{% static 'images/carusel3.jpg' %}" class="d-block w-100" alt="Image 3">
+            <img src="{% static 'images/carrusel3.png' %}" class="d-block w-100" alt="Image 3" style="height: 750px; object-fit: cover; object-position: top;">
             <div class="carousel-caption d-none d-md-block text-black">
-                <h5>Our Home</h5>
-                <p>El hogar de tu futuro hogar.</p>
+                <h3>{% trans 'Our Home' %}</h3>
+                <p style="font-size: 1.25rem;">{% trans 'The home of your future house.' %}</p>
             </div>
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="visually-hidden">{% trans 'Previous' %}</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span class="visually-hidden">{% trans 'Next' %}</span>
     </button>
 </div>
 {% endblock %}

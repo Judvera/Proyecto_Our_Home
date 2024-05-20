@@ -1,5 +1,6 @@
 {% extends "static_base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="container h-100">
@@ -10,7 +11,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-1">Sign up</p>
+                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-1">{% trans 'Sign up' %}</p>
 
                             <form method="post" class="mx-1 mx-md-4">
                                 {% csrf_token %}
@@ -19,7 +20,7 @@
                                 <div class="d-flex flex-row align-items-center">
                                     <div class="form-outline mb-4">
                                         {{ form.rut }}
-                                        <label class="form-label" for="{{ form.rut.id_for_label }}">RUT</label>
+                                        <label class="form-label" for="{{ form.rut.id_for_label }}">{% trans 'RUT' %}</label>
                                     </div>
                                 </div>
 
@@ -27,8 +28,7 @@
                                 <div class="d-flex flex-row align-items-center">
                                     <div class="form-outline mb-4">
                                         {{ form.first_name }}
-                                        <label class="form-label" for="{{ form.first_name.id_for_label }}">First
-                                            Name</label>
+                                        <label class="form-label" for="{{ form.first_name.id_for_label }}">{% trans 'First Name' %}</label>
                                     </div>
                                 </div>
 
@@ -36,8 +36,7 @@
                                 <div class="d-flex flex-row align-items-center">
                                     <div class="form-outline mb-4">
                                         {{ form.last_name }}
-                                        <label class="form-label" for="{{ form.last_name.id_for_label }}">Last
-                                            Name</label>
+                                        <label class="form-label" for="{{ form.last_name.id_for_label }}">{% trans 'Last Name' %}</label>
                                     </div>
                                 </div>
 
@@ -45,7 +44,7 @@
                                 <div class="d-flex flex-row align-items-center">
                                     <div class="form-outline mb-4">
                                         {{ form.address }}
-                                        <label class="form-label" for="{{ form.address.id_for_label }}">Address</label>
+                                        <label class="form-label" for="{{ form.address.id_for_label }}">{% trans 'Address' %}</label>
                                     </div>
                                 </div>
 
@@ -53,7 +52,7 @@
                                 <div class="d-flex flex-row align-items-center">
                                     <div class="form-outline mb-4">
                                         {{ form.phone }}
-                                        <label class="form-label" for="{{ form.phone.id_for_label }}">Phone</label>
+                                        <label class="form-label" for="{{ form.phone.id_for_label }}">{% trans 'Phone' %}</label>
                                     </div>
                                 </div>
 
@@ -61,8 +60,7 @@
                                 <div class="d-flex flex-row align-items-center">
                                     <div class="form-outline mb-4">
                                         {{ form.email }}
-                                        <label class="form-label" for="{{ form.email.id_for_label }}">Your
-                                            Email</label>
+                                        <label class="form-label" for="{{ form.email.id_for_label }}">{% trans 'Your Email' %}</label>
                                     </div>
                                 </div>
 
@@ -70,8 +68,7 @@
                                 <div class="d-flex flex-row align-items-center">
                                     <div class="form-outline mb-4">
                                         {{ form.user_type }}
-                                        <label class="form-label" for="{{ form.user_type.id_for_label }}">User
-                                            Type</label>
+                                        <label class="form-label" for="{{ form.user_type.id_for_label }}">{% trans 'User Type' %}</label>
                                     </div>
                                 </div>
 
@@ -80,16 +77,16 @@
                                     <div class="form-outline mb-4">
                                         {{ form.password }}
                                         <label class="form-label"
-                                            for="{{ form.password.id_for_label }}">Password</label>
+                                            for="{{ form.password.id_for_label }}">{% trans 'Password' %}</label>
                                     </div>
                                 </div>
 
                                 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">{% trans 'Register' %}</button>
                                 </div>
 
-                                <p class="text-center text-muted mt-3">Have already an account? <a
-                                        href="{% url 'login' %}" class="fw-bold text-body"><u>Login here</u></a></p>
+                                <p class="text-center text-muted mt-3">{% trans 'Have already an account?' %} <a
+                                        href="{% url 'login' %}" class="fw-bold text-body"><u>{% trans 'Login here' %}</u></a></p>
                             </form>
 
                         </div>

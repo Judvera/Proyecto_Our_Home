@@ -1,22 +1,23 @@
 {% extends "static_base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="container py-3">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-9">
 
-            <h1 class="text-black text-center mb-4">Add New Property</h1>
+            <h1 class="text-black text-center mb-4">{% trans 'Add New Property' %}</h1>
 
             <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
 
                     <form method="post">
                         {% csrf_token %}
-                        <!-- Nombre Propiedad -->
+
                         <div class="row align-items-center pt-4 pb-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Name</h6>
+                                <h6 class="mb-0">{% trans 'Name' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.name }}
@@ -24,10 +25,10 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Descripcion -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Description</h6>
+                                <h6 class="mb-0">{% trans 'Description' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.description }}
@@ -35,10 +36,10 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Metros Construidos -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Built Area</h6>
+                                <h6 class="mb-0">{% trans 'Built Area' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.built_area }}
@@ -46,10 +47,10 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Metros totales -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Total Area</h6>
+                                <h6 class="mb-0">{% trans 'Total Area' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.total_area }}
@@ -57,10 +58,10 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Cantidad Estacionamientos -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Parking Spaces</h6>
+                                <h6 class="mb-0">{% trans 'Parking Spaces' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.parking_spaces }}
@@ -68,10 +69,10 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Piezas -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Bedrooms</h6>
+                                <h6 class="mb-0">{% trans 'Bedrooms' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.bedrooms }}
@@ -79,10 +80,10 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Baños -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Bathrooms</h6>
+                                <h6 class="mb-0">{% trans 'Bathrooms' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.bathrooms }}
@@ -90,10 +91,10 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Dirección -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Address</h6>
+                                <h6 class="mb-0">{% trans 'Address' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.address }}
@@ -101,43 +102,42 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Region -->
+
                         <div class="row align-items-center pt-4 pb-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Region</h6>
+                                <h6 class="mb-0">{% trans 'Region' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 <select id="region" name="region" class="form-control">
-                                    <option value="">Select a region</option>
+                                    <option value="">{% trans 'Select a region' %}</option>
                                     {% for region in regions %}
-                                    <option value="{{ region.id }}">{{ region.name_region }}</option>
+                                        <option value="{{ region.id }}">{{ region.name_region }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Comuna -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">District</h6>
+                                <h6 class="mb-0">{% trans 'District' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 <select id="district" name="district" class="form-control">
-                                    <option value="">Select a district</option>
+                                    <option value="">{% trans 'Select a district' %}</option>
                                     {% for district in districts %}
-                                    <option value="{{ district.id }}" data-region="{{ district.region_id }}">{{
-                                        district.name_district }}</option>
+                                        <option value="{{ district.id }}" data-region="{{ district.region_id }}">{{ district.name_district }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Tipo Propiedad -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Property Type</h6>
+                                <h6 class="mb-0">{% trans 'Property Type' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.property_type }}
@@ -145,10 +145,10 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Precio Arriendo -->
+
                         <div class="row align-items-center py-3">
                             <div class="col-md-3 ps-5">
-                                <h6 class="mb-0">Rental Price</h6>
+                                <h6 class="mb-0">{% trans 'Rental Price' %}</h6>
                             </div>
                             <div class="col-md-9 pe-5">
                                 {{ form.rental_price }}
@@ -156,9 +156,9 @@
                         </div>
 
                         <hr class="mx-n3">
-                        <!-- Boton de guardado -->
+
                         <div class="px-5 py-4 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Save Property</button>
+                            <button type="submit" class="btn btn-primary btn-lg">{% trans 'Save Property' %}</button>
                         </div>
 
                     </form>
@@ -169,18 +169,17 @@
         </div>
     </div>
 </div>
-<!-- Logica para mostrar las comunas dependiendo de la región -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const regionSelect = document.getElementById('region');
         const districtSelect = document.getElementById('district');
         const districts = Array.from(districtSelect.options).slice(1);
-
-        regionSelect.addEventListener('change', function () {
+    
+        regionSelect.addEventListener('change', function() {
             const regionId = this.value;
-
+    
             districtSelect.innerHTML = '<option value="">Select a district</option>';
-
+    
             districts.forEach(district => {
                 if (district.getAttribute('data-region') === regionId) {
                     districtSelect.appendChild(district);
@@ -188,5 +187,5 @@
             });
         });
     });
-</script>
+    </script>
 {% endblock %}

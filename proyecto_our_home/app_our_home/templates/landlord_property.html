@@ -1,25 +1,24 @@
 {% extends 'static_base.html' %}
 {% load static %}
-
-{% block title %}My Properties{% endblock %}
+{% load i18n %}
 
 {% block content %}
-<div class="container pt-4">
+<div class="container pt-4 vh-100">
     <div class="row">
         <div class="col-12 mb-3 mb-lg-5">
             <div class="overflow-hidden card table-nowrap table-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">My Properties</h5>
-                    <a href="{% url 'add_property' %}" class="btn btn-light btn-sm">Add Property</a>
+                    <h5 class="mb-0">{% trans 'My Properties' %}</h5>
+                    <a href="{% url 'add_property' %}" class="btn btn-light btn-sm">{% trans 'Add Property' %}</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table mb-0">
                         <thead class="small text-uppercase bg-body text-muted">
                             <tr>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Rental Price</th>
-                                <th class="text-end">Actions</th>
+                                <th>{% trans 'Name' %}</th>
+                                <th>{% trans 'Address' %}</th>
+                                <th>{% trans 'Rental Price' %}</th>
+                                <th class="text-end">{% trans 'Actions' %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,10 +34,10 @@
                                 <td>{{ property.address }}</td>
                                 <td>${{ property.rental_price }}</td>
                                 <td class="text-end">
-                                    <a href="{% url 'update_property' property.id %}" class="btn btn-primary btn-sm">Update</a>
+                                    <a href="{% url 'update_property' property.id %}" class="btn btn-primary btn-sm">{% trans 'Update' %}</a>
                                     <form method="post" action="{% url 'delete_property' property.id %}" style="display:inline;">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this property?');">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this property?');">{% trans 'Delete' %}</button>
                                     </form>
                                 </td>
                             </tr>

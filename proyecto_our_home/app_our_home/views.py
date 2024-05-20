@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import PropertyForm, PropertyUpdateForm, UserRegistrationForm
 from .models import User, Property, Region, District
 from django.urls import reverse
+from django.utils.translation import gettext as _
 
 # Create your views here.
 def indexView(request):
@@ -38,14 +39,14 @@ def login_view(request):
                 request.session['is_authenticated'] = True
                 return redirect('profile')
             else:
-                error_message = 'Invalid password'
+                error_message = _('Invalid password')
         except User.DoesNotExist:
             user2 = authenticate(request, username=email_username, password=password)
             if user2 is not None:
                 login(request, user2)
                 return redirect('profile')
             else:
-                error_message = 'Invalid email or password'
+                error_message = _('Invalid email or password')
     
     return render(request, 'registration/login.html', {'error_message': error_message})
 
@@ -103,7 +104,7 @@ def update_property(request, property_id):
         form = PropertyForm(request.POST, instance=property)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Property updated successfully!')
+            messages.success(request, _('Property updated successfully!'))
             return redirect('landlord_property')
     else:
         form = PropertyForm(instance=property)
@@ -123,11 +124,34 @@ def delete_property(request, property_id):
     property = get_object_or_404(Property, id=property_id, landlord=user)
     if request.method == 'POST':
         property.delete()
-        messages.success(request, 'Property deleted successfully!')
+        messages.success(request, _('Property deleted successfully!'))
         return redirect('landlord_property')
     return render(request, 'confirm_delete_property.html', {'property': property})
 
 def property_list(request):
     user = User.objects.get(rut=request.session.get('user_id'))
+    
+    regions = Region.objects.all()
+
+    selected_region_id = request.GET.get('region')
+    selected_district_id = request.GET.get('district')
+
     properties = Property.objects.all()
-    return render(request, 'property_list.html', {'properties': properties})
+    
+    if selected_region_id:
+        properties = properties.filter(region_id=selected_region_id)
+        
+        districts = District.objects.filter(region_id=selected_region_id)
+    else:
+        districts = District.objects.none()
+
+    if selected_district_id:
+        properties = properties.filter(district_id=selected_district_id)
+
+    return render(request, 'property_list.html', {
+        'properties': properties,
+        'regions': regions,
+        'districts': districts,
+        'selected_region_id': selected_region_id,
+        'selected_district_id': selected_district_id,
+    })

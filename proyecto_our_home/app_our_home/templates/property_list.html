@@ -1,29 +1,60 @@
+<!-- PRUEBA FILTRO -->
 {% extends "static_base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="container pt-4">
-    <h1 class="mb-4">Properties for Rent</h1>
+    <h1 class="mb-4 text-center">{% trans 'Properties for Rent' %}</h1>
+    <!-- FILTRO POR REGIONES Y COMUNAS -->
+    <form method="get">
+        <div class="form-row">
+            <h2>{% trans 'Filter' %}</h2>
+            <div class="col-md-6 mb-3">
+                <label for="region">{% trans 'Region' %}</label>
+                <select class="form-control" id="region" name="region" onchange="this.form.submit()">
+                    <option value="">{% trans 'Select a Region' %}</option>
+                    {% for region in regions %}
+                        <option value="{{ region.id }}" {% if region.id|stringformat:"s" == selected_region_id %}selected{% endif %}>
+                            {{ region.name_region }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="district">{% trans 'District' %}</label>
+                <select class="form-control" id="district" name="district" onchange="this.form.submit()">
+                    <option value="">{% trans 'Select a District' %}</option>
+                    {% for district in districts %}
+                        <option value="{{ district.id }}" {% if district.id|stringformat:"s" == selected_district_id %}selected{% endif %}>
+                            {{ district.name_district }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </form>
+    <!-- LISTADO DE PROPIEDADES -->
     <div class="row">
+        <h2>{% trans 'Available Properties' %}</h2>
         {% for property in properties %}
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 pt-2">
             <div class="card">
                 <img class="card-img-top" src="{% static 'images/property' %}{{ forloop.counter }}.jpg" alt="Property image {{ forloop.counter }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ property.name }}</h5>
                     <p class="card-text">{{ property.description }}</p>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Built Area:</strong> {{ property.built_area }} sqft</li>
-                        <li class="list-group-item"><strong>Total Area:</strong> {{ property.total_area }} sqft</li>
-                        <li class="list-group-item"><strong>Parking Spaces:</strong> {{ property.parking_spaces }}</li>
-                        <li class="list-group-item"><strong>Bedrooms:</strong> {{ property.bedrooms }}</li>
-                        <li class="list-group-item"><strong>Bathrooms:</strong> {{ property.bathrooms }}</li>
-                        <li class="list-group-item"><strong>Address:</strong> {{ property.address }}</li>
-                        <li class="list-group-item"><strong>Region:</strong> {{ property.region.name_region }}</li>
-                        <li class="list-group-item"><strong>District:</strong> {{ property.district.name_district }}
-                        </li>
-                        <li class="list-group-item"><strong>Property Type:</strong> {{ property.get_property_type_display }}</li>
-                        <li class="list-group-item"><strong>Rental Price:</strong> ${{ property.rental_price }}</li>
+                        <li class="list-group-item"><strong>{% trans 'Built Area:' %}</strong> {{ property.built_area }} {% trans 'sqft' %}</li>
+                        <li class="list-group-item"><strong>{% trans 'Total Area:' %}</strong> {{ property.total_area }} {% trans 'sqft' %}</li>
+                        <li class="list-group-item"><strong>{% trans 'Parking Spaces:' %}</strong> {{ property.parking_spaces }}</li>
+                        <li class="list-group-item"><strong>{% trans 'Bedrooms:' %}</strong> {{ property.bedrooms }}</li>
+                        <li class="list-group-item"><strong>{% trans 'Bathrooms:' %}</strong> {{ property.bathrooms }}</li>
+                        <li class="list-group-item"><strong>{% trans 'Address:' %}</strong> {{ property.address }}</li>
+                        <li class="list-group-item"><strong>{% trans 'Region:' %}</strong> {{ property.region.name_region }}</li>
+                        <li class="list-group-item"><strong>{% trans 'District:' %}</strong> {{ property.district.name_district }}</li>
+                        <li class="list-group-item"><strong>{% trans 'Property Type:' %}</strong> {{ property.get_property_type_display }}</li>
+                        <li class="list-group-item"><strong>{% trans 'Rental Price:' %}</strong> ${{ property.rental_price }}</li>
                     </ul>
                 </div>
             </div>

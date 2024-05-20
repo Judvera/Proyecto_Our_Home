@@ -1,0 +1,372 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-20 15:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: models.py:9
+msgid "Rut"
+msgstr "RUT"
+
+#: models.py:10 models.py:41 templates/add_property.html:20
+#: templates/landlord_property.html:18 templates/update_property.html:20
+msgid "Name"
+msgstr "Nombre"
+
+#: models.py:11 templates/register.html:39
+msgid "Last Name"
+msgstr "Apellido"
+
+#: models.py:12 models.py:48 templates/add_property.html:97
+#: templates/landlord_property.html:19 templates/profile.html:68
+#: templates/register.html:47 templates/update_property.html:97
+msgid "Address"
+msgstr "Dirección"
+
+#: models.py:13 templates/profile.html:50 templates/register.html:55
+msgid "Phone"
+msgstr "Teléfono"
+
+#: models.py:14 templates/profile.html:41
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: models.py:15 templates/profile.html:77 templates/register.html:71
+msgid "User Type"
+msgstr "Tipo de usuario"
+
+#: models.py:16 templates/register.html:80 templates/registration/login.html:34
+msgid "Password"
+msgstr "Contraseña"
+
+#: models.py:22 models.py:49 templates/add_property.html:108
+#: templates/property_list.html:14 templates/update_property.html:108
+msgid "Region"
+msgstr "Región"
+
+#: models.py:28 models.py:50 templates/add_property.html:124
+#: templates/property_list.html:25 templates/update_property.html:124
+msgid "District"
+msgstr "Comuna"
+
+#: models.py:42 templates/add_property.html:31
+#: templates/update_property.html:31
+msgid "Description"
+msgstr "Descripción"
+
+#: models.py:43 templates/add_property.html:42
+#: templates/update_property.html:42
+msgid "Built Area"
+msgstr "Área construida"
+
+#: models.py:44 templates/add_property.html:53
+#: templates/update_property.html:53
+msgid "Total Area"
+msgstr "Área total"
+
+#: models.py:45 templates/add_property.html:64
+#: templates/update_property.html:64
+msgid "Parking Spaces"
+msgstr "Estacionamientos"
+
+#: models.py:46 templates/add_property.html:75
+#: templates/update_property.html:75
+msgid "Bedrooms"
+msgstr "Dormitorios"
+
+#: models.py:47 templates/add_property.html:86
+#: templates/update_property.html:86
+msgid "Bathrooms"
+msgstr "Baños"
+
+#: models.py:51 templates/add_property.html:140
+#: templates/update_property.html:140
+msgid "Property Type"
+msgstr "Tipo de propiedad"
+
+#: models.py:52 templates/add_property.html:151
+#: templates/landlord_property.html:20 templates/update_property.html:151
+msgid "Rental Price"
+msgstr "Precio de arriendo"
+
+#: models.py:53
+msgid "Landlord"
+msgstr "Propietario"
+
+#: templates/add_property.html:10
+msgid "Add New Property"
+msgstr "Agregar nueva propiedad"
+
+#: templates/add_property.html:112 templates/update_property.html:112
+msgid "Select a region"
+msgstr "Selecciona una región"
+
+#: templates/add_property.html:128 templates/update_property.html:128
+msgid "Select a district"
+msgstr "Selecciona una comuna"
+
+#: templates/add_property.html:161
+msgid "Save Property"
+msgstr "Guardar propiedad"
+
+#: templates/confirm_delete_property.html:7
+msgid "Are you sure you want to delete this property?"
+msgstr "¿Estás seguro de que quieres eliminar esta propiedad?"
+
+#: templates/confirm_delete_property.html:8
+msgid "Property Name:"
+msgstr "Nombre de la propiedad:"
+
+#: templates/confirm_delete_property.html:9 templates/property_list.html:53
+msgid "Address:"
+msgstr "Dirección:"
+
+#: templates/confirm_delete_property.html:10 templates/property_list.html:57
+msgid "Rental Price:"
+msgstr "Precio de arriendo:"
+
+#: templates/confirm_delete_property.html:13
+msgid "Delete Property"
+msgstr "Eliminar propiedad"
+
+#: templates/confirm_delete_property.html:14
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/index.html:22
+msgid "Room for everyone"
+msgstr "Espacio para todos"
+
+#: templates/index.html:23
+msgid "¿Landlor? ¿Tenant? Here you can search or create according to your needs."
+msgstr "¿Propietario? ¿Inquilino? Aquí puedes buscar o crear según tus necesidades."
+
+#: templates/index.html:30
+msgid "Anywhere, anytime"
+msgstr "En cualquier lugar, en cualquier momento"
+
+#: templates/index.html:31
+msgid "Check our catalog or your new applications anytime, anywhere."
+msgstr "Revisa nuestro catálogo o tus nuevas solicitudes en cualquier momento y lugar."
+
+#: templates/index.html:38
+msgid "Our Home"
+msgstr "Our Home"
+
+#: templates/index.html:39
+msgid "The home of your future house."
+msgstr "El hogar de tu futura casa."
+
+#: templates/index.html:45
+msgid "Previous"
+msgstr "Anterior"
+
+#: templates/index.html:49
+msgid "Next"
+msgstr "Siguiente"
+
+#: templates/landlord_property.html:11
+msgid "My Properties"
+msgstr "Mis propiedades"
+
+#: templates/landlord_property.html:12 templates/static_base.html:58
+msgid "Add Property"
+msgstr "Agregar propiedad"
+
+#: templates/landlord_property.html:21
+msgid "Actions"
+msgstr "Acciones"
+
+#: templates/landlord_property.html:37
+msgid "Update"
+msgstr "Actualizar"
+
+#: templates/landlord_property.html:40
+msgid "Delete"
+msgstr "Eliminar"
+
+#: templates/profile.html:20
+msgid "Follow"
+msgstr "Seguir"
+
+#: templates/profile.html:22
+msgid "Message"
+msgstr "Mensaje"
+
+#: templates/profile.html:32
+msgid "Full Name"
+msgstr "Nombre completo"
+
+#: templates/profile.html:59
+msgid "Mobile"
+msgstr "Móvil"
+
+#: templates/property_list.html:8
+msgid "Properties for Rent"
+msgstr "Propiedades en arriendo"
+
+#: templates/property_list.html:12
+msgid "Filter"
+msgstr "Filtrar"
+
+#: templates/property_list.html:16
+msgid "Select a Region"
+msgstr "Selecciona una región"
+
+#: templates/property_list.html:27
+msgid "Select a District"
+msgstr "Selecciona una comuna"
+
+#: templates/property_list.html:39
+msgid "Available Properties"
+msgstr "Propiedades disponibles"
+
+#: templates/property_list.html:48
+msgid "Built Area:"
+msgstr "Área construida:"
+
+#: templates/property_list.html:48 templates/property_list.html:49
+msgid "sqft"
+msgstr "mt2"
+
+#: templates/property_list.html:49
+msgid "Total Area:"
+msgstr "Área total:"
+
+#: templates/property_list.html:50
+msgid "Parking Spaces:"
+msgstr "Estacionamientos:"
+
+#: templates/property_list.html:51
+msgid "Bedrooms:"
+msgstr "Dormitorios:"
+
+#: templates/property_list.html:52
+msgid "Bathrooms:"
+msgstr "Baños:"
+
+#: templates/property_list.html:54
+msgid "Region:"
+msgstr "Región:"
+
+#: templates/property_list.html:55
+msgid "District:"
+msgstr "Comuna:"
+
+#: templates/property_list.html:56
+msgid "Property Type:"
+msgstr "Tipo de propiedad:"
+
+#: templates/register.html:14
+msgid "Sign up"
+msgstr "Regístrate"
+
+#: templates/register.html:23
+msgid "RUT"
+msgstr "RUT"
+
+#: templates/register.html:31
+msgid "First Name"
+msgstr "Nombre"
+
+#: templates/register.html:63
+msgid "Your Email"
+msgstr "Tu correo electrónico"
+
+#: templates/register.html:85
+msgid "Register"
+msgstr "Registrar"
+
+#: templates/register.html:88
+msgid "Have already an account?"
+msgstr "¿Ya tienes una cuenta?"
+
+#: templates/register.html:89
+msgid "Login here"
+msgstr "Inicia sesión aquí"
+
+#: templates/registration/login.html:15 templates/registration/login.html:40
+#: templates/static_base.html:67
+msgid "Log In"
+msgstr "Iniciar sesión"
+
+#: templates/registration/login.html:16
+msgid "Please enter your login and password!"
+msgstr "Por favor ingresa tu usuario y contraseña!"
+
+#: templates/registration/login.html:28
+msgid "Email or Username"
+msgstr "Correo electrónico o Username"
+
+#: templates/registration/login.html:37
+msgid "Forgot password?"
+msgstr "¿Olvidaste tu contraseña?"
+
+#: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "¿No tienes una cuenta?"
+
+#: templates/registration/login.html:42
+msgid "Sign Up"
+msgstr "Regístrate"
+
+#: templates/static_base.html:40
+msgid "Home"
+msgstr "Inicio"
+
+#: templates/static_base.html:47
+msgid "Profile"
+msgstr "Perfil"
+
+#: templates/static_base.html:51 templates/static_base.html:55
+msgid "Properties"
+msgstr "Propiedades"
+
+#: templates/static_base.html:62
+msgid "Log Out"
+msgstr "Cerrar sesión"
+
+#: templates/static_base.html:98
+msgid "Our Home. All rights reserved."
+msgstr "Our Home. Todos los derechos reservados."
+
+#: templates/static_base.html:99
+msgid "Created by Judith Vera and Emilio Madrid for Desafio Latam"
+msgstr "Creado por Judith Vera y Emilio Madrid para Desafío Latam"
+
+#: templates/update_property.html:10
+msgid "Update Property:"
+msgstr "Actualizar propiedad:"
+
+#: templates/update_property.html:161
+msgid "Update Property"
+msgstr "Actualizar propiedad"
+
+#: views.py:42
+msgid "Invalid password"
+msgstr "Contraseña inválida"
+
+#: views.py:49
+msgid "Invalid email or password"
+msgstr "Correo electrónico o contraseña inválidos"
+
+#: views.py:107
+msgid "Property updated successfully!"
+msgstr "¡Propiedad actualizada con éxito!"
+
+#: views.py:127
+msgid "Property deleted successfully!"
+msgstr "¡Propiedad eliminada con éxito!"
