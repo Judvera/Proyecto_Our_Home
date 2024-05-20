@@ -12,6 +12,8 @@ Hito 4 - Creando una aplicación usando datos con Django y su ORM - Completado
 
 Se agrega el archivo "update_passwords.py", ya que el Log In de usuarios se está utilizando con las contraseñas hasheadas. Con el archivo agregado, se hashean las contraseñas de aquellos usuarios que entraron con la contraseña por defecto.
 
+Traducción completa.
+
 ## Descripción
 
 Este repositorio será nuestro punto de trabajo para el desarrollo de los diferentes hitos del proyecto correspondiente al modulo 7.
